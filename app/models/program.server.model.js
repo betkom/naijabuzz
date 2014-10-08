@@ -16,6 +16,12 @@ var ProgramSchema = new Schema({
 		required: 'Please fill Program category',
 		trim: true
 	},
+	name:{
+		type: String,
+		default: '',
+		required: 'Please fill in Program Title',
+		trim: true
+	},
 	description: {
 		type: String,
 		default: '',

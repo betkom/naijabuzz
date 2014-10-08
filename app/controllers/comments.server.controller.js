@@ -22,7 +22,6 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			//res.jsonp(comment);
 			req.program.comments.push(comment);
 			req.program.save(function(err){
 

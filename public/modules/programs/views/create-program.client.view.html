@@ -6,9 +6,30 @@
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
+                    <label class= "control-label" for="category">Category</label>
+                    <div class="controls">
+                    <select  data-ng-model="category" id="category" placeholder="Choose Category">
+                        <option value="Sports" selected>Sports</option>
+                        <option value="Party">Party</option>
+                        <option value="Launch">Launch Events</option>
+                        <option value="church">Church Events</option>
+                    </select>
+                    </div>
                     <label class="control-label" for="name">Name</label>
                     <div class="controls">
                         <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                    </div>
+                    <label class="control-label" for="location">Location</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="location" id="location" class="form-control" placeholder="Location" required>
+                    </div>
+                    <label class="control-label" for="programDate">Event Date</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="programDate" id="programDate" class="form-control" placeholder="YYYY/MM/DD" required>
+                    </div>
+                    <label class="control-label" for="description">Description</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="description" id="description" class="form-control" placeholder="Enter Event Description" required>
                     </div>
                 </div>
                 <div class="form-group">

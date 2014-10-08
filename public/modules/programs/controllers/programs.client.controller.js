@@ -1,15 +1,19 @@
 'use strict';
 
 // Programs controller
-angular.module('programs').controller('ProgramsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Programs',
-	function($scope, $stateParams, $location, Authentication, Programs ) {
+angular.module('programs').controller('ProgramsController', ['$scope','$http', '$stateParams', '$location', 'Authentication', 'Programs','Comments',
+	function($scope,$http, $stateParams, $location, Authentication, Programs, Comments) {
 		$scope.authentication = Authentication;
 
 		// Create new Program
 		$scope.create = function() {
 			// Create new Program object
 			var program = new Programs ({
-				name: this.name
+				category: this.category,
+				name: this.name,
+				location: this.location,
+				programDate: this.programDate,
+				description: this.description
 			});
 
 			// Redirect after save
@@ -60,6 +64,23 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$statePa
 			$scope.program = Programs.get({ 
 				programId: $stateParams.programId
 			});
+			$scope.getComments();
 		};
+
+		$scope.getComments = function()
+		{
+			//console.log
+			$http.get('/programs/'+$scope.program._id+'/comments').success(function(res){
+				console.log(res);
+				$scope.comments=res;
+			});
+		};
+
+		// $scope.getComments = function()
+		// {
+		// 	$scope.comments = Comments.get({
+		// 		programId: $stateParams.programId
+		// 	});
+		// };
 	}
 ]);

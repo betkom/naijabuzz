@@ -88,7 +88,7 @@ exports.search = function(req,res){
 
 	var $or = {$or:[]};
 	var checkQuery = function(){
-		if (req.query.q&&req.query.q.length >0){
+		if (req.query.q && req.query.q.length >0){
 			$or.$or.push({location : new RegExp(req.query.q, 'i')});
 		}
 		if (req.query.category && req.query.category.length > 1){
@@ -115,7 +115,7 @@ exports.search = function(req,res){
 /**
  * Program middleware
  */
-exports.programByID = function(req, res, next, id) { Program.findById(id).populate('user', 'displayName').populate('comments','comment').populate('likes','like').exec(function(err, program) {
+exports.programByID = function(req, res, next, id) { Program.findById(id).populate('comments').populate('user').populate({ path: 'comments.user', model: 'User' }).populate('likes','like').exec(function(err, program) {
 		if (err) return next(err);
 		if (! program) return next(new Error('Failed to load Program ' + id));
 		req.program = program ;

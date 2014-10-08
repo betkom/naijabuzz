@@ -9,7 +9,7 @@ angular.module('likes').controller('LikesController', ['$scope', '$stateParams',
 		$scope.create = function() {
 			// Create new Like object
 			var like = new Likes ({
-				name: this.name
+				like: this.like
 			});
 
 			// Redirect after save
@@ -21,6 +21,10 @@ angular.module('likes').controller('LikesController', ['$scope', '$stateParams',
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+		};
+
+		$scope.haha = function(){
+			console.log('haha');
 		};
 
 		// Remove existing Like
