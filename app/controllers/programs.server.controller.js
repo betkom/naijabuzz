@@ -14,7 +14,12 @@ var mongoose = require('mongoose'),
  * Create a Program
  */
 exports.create = function(req, res) {
+	console.log(req.body);
+
 	var program = new Program(req.body);
+
+	console.log(program);
+
 	program.user = req.user;
 
 	program.save(function(err) {

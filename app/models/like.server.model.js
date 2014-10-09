@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
  */
 var LikeSchema = new Schema({
 	like: {
-		type: Boolean,
+		type: Number,
 		default: '',
 		required: 'Please like',
 		trim: true

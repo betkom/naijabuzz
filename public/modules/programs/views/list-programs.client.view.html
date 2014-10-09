@@ -10,8 +10,10 @@
 				by
 				<span data-ng-bind="program.user.displayName"></span>
 			</small>
-            <img ng-src="/modules/programs/img/p01.jpg" alt=""/>
+            <img src="{{program.image[0].path}}" alt=""/>
 			<h4 class="list-group-item-heading" data-ng-bind="program.name"></h4>
+            <span data-ng-bind="program.comments.length"></span>{{" comment(s)"}}
+            <span data-ng-bind="program.likes.length"></span>{{" like(s)"}}
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!programs.$resolved || programs.length">

@@ -37,7 +37,13 @@ var ProgramSchema = new Schema({
 		type: String,
 		default: '',
 		required: 'yyyy/mm/dd'
-	}, 
+	},
+	image:[{
+		path: {
+			type: String,
+			default: ''
+		}
+	}], 
 	created: {
 		type: Date,
 		default: Date.now

@@ -40,6 +40,8 @@
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+	    
+
 </head>
 
 <body class="ng-cloak">
@@ -49,13 +51,15 @@
 			{% block content %}{% endblock %}
 		</section>
 	</section>
-
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};
 	</script>
-
-	<!--Application JavaScript Files-->
+	
+	<!--Application JavaScript Files 
+	    <script src="/modules/programs/controllers/programs.client.controller.js"></script>
+	     <script src="/modules/programs/directives/ngAutocomplete.js"></script>-->
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
 	{% endfor %} 
 

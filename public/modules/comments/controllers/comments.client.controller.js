@@ -1,15 +1,15 @@
 'use strict';
 
 // Comments controller
-angular.module('comments').controller('CommentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Comments',
-	function($scope, $stateParams, $location, Authentication, Comments ) {
+angular.module('comments').controller('CommentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Comments','Programs',
+	function($scope, $stateParams, $location, Authentication, Comments, Programs) {
 		$scope.authentication = Authentication;
 
 		// Create new Comment
 		$scope.create = function() {
 			// Create new Comment object
 			var comment = new Comments ({
-				comment: this.comment
+				comment: $scope.comment
 			});
 
 			// Redirect after save

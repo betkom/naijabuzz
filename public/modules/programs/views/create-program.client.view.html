@@ -31,6 +31,9 @@
                     <div class="controls">
                         <input type="text" data-ng-model="description" id="description" class="form-control" placeholder="Enter Event Description" required>
                     </div>
+                    <div class="controls">
+                        <input type="file" name="upload" data-ng-file-select="onFileSelect($files)" accept="image/jpeg">
+                    </div>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-default">

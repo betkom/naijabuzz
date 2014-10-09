@@ -26,7 +26,7 @@
 	<p class="lead" data-ng-bind="program.name"></p>
 	<p class="lead" data-ng-bind="program.description"></p>
 	<button type="button" ng-controller='LikesController' ng-click="create()">Like</button>
-	<input class="commentEntry" data-ng-bind = "program.comments "type= "text"/>
+	<input class="commentEntry" data-ng-bind = "	comments "type= "text"/>
 	<button type="button" ng-controller='CommentsController' ng-click = "create()">Add Comment</button>
 	<div data-ng-repeat="comment in program.comments">
 		<span class="lead1" data-ng-bind="comment.displayName"></span>
