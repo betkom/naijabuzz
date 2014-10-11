@@ -12,9 +12,12 @@ var mongoose = require('mongoose'),
  * Create a Like
  */
 exports.create = function(req, res) {
-	var like = new Like(req.body);
+	var like = new Like();
+	var program = req.program;
+	//like.like +=1;
 	like.user = req.user;
-	like.program = req.program;
+	like.program = program;
+	program.like.push(like);
 
 	like.save(function(err) {
 		if (err) {
@@ -22,11 +25,12 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			req.program.likes.push(like);
-			req.program.save(function(err){
+			program.save(function(err){
 
 				if(!err)
 					res.jsonp(like);
+				else 
+					res.status(400).send({message:errorHandler.getErrorMessage(err)});
 			});
 		}
 	});
@@ -63,6 +67,13 @@ exports.update = function(req, res) {
  */
 exports.delete = function(req, res) {
 	var like = req.like ;
+	var program = req.program;
+
+	var index = program.likes.indexOf(like._id);
+	
+	if(index>-1)
+		program.likes.splice(index,1);
+	
 
 	like.remove(function(err) {
 		if (err) {
@@ -70,7 +81,15 @@ exports.delete = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(like);
+			program.save(function(err){
+				if(err)
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				else
+					res.jsonp(like);
+			});
+			
 		}
 	});
 };

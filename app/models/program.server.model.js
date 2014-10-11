@@ -52,7 +52,7 @@ var ProgramSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
-	likes:[{
+	likes: [{
 		type: Schema.ObjectId,
 		ref: 'Like'
 	}],
@@ -61,5 +61,4 @@ var ProgramSchema = new Schema({
 		ref: 'Comment'
 	}]
 });
-
 mongoose.model('Program', ProgramSchema);

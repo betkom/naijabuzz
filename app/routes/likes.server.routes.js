@@ -8,7 +8,7 @@ module.exports = function(app) {
 	// Likes Routes
 	app.route('/programs/:programId/likes')
 		.get(likes.list)
-		.post(users.requiresLogin, likes.create);
+		.put(users.requiresLogin, likes.create);
 
 	app.route('/programs/:programId/likes/:likeId')
 		.get(likes.read)

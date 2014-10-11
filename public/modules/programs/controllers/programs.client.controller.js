@@ -1,16 +1,11 @@
 'use strict';
 
 // Programs controller
-angular.module('programs').controller('ProgramsController', ['$scope','$http', '$stateParams', '$location', 'Authentication', 'Programs','Comments', 'Likes',
-	function($scope,$http, $stateParams, $location, Authentication, Programs, Comments, Likes) {
+angular.module('programs').controller('ProgramsController', ['$scope','$http', '$stateParams', '$location', 'Authentication', 'Programs','CustomRequest',
+	function($scope,$http, $stateParams, $location, Authentication, Programs,CustomRequest) {
 		$scope.authentication = Authentication;
-
-		// var request = require('request');
-		// var url = require('url');
-		// app.get('')
-
 		// Create new Program
-
+		$scope.programDate.datepicker();
 		$scope.onFileSelect = function($file) {
 			
 			$scope.select = $file;
@@ -28,7 +23,6 @@ angular.module('programs').controller('ProgramsController', ['$scope','$http', '
 				reader.readAsDataURL($scope.select[i]);	
 			}
 		};
-
 		$scope.create = function() {
 			// Create new Program object
 			var program = new Programs ({
@@ -37,16 +31,19 @@ angular.module('programs').controller('ProgramsController', ['$scope','$http', '
 				location: this.location,
 				programDate: this.programDate,
 				description: this.description
+	
 			});
 			program.image = $scope.stringFiles;
 
 			// Redirect after save
 			program.$save(function(response) {
-				console.log(response);
+				console.log(response._id);
 				$location.path('programs/' + response._id);
 
 				// Clear form fields
 				$scope.name = '';
+				$scope.location = '';
+				$scope.description = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 				console.log(errorResponse.data.message);
@@ -82,39 +79,78 @@ angular.module('programs').controller('ProgramsController', ['$scope','$http', '
 
 		// Find a list of Programs
 		$scope.find = function() {
-			$scope.programs = Programs.query();
+			$scope.programs =Programs.query();
 			console.log($scope.programs);
 		};
 
-		// Find existing Program
+		//Find existing Program
 		$scope.findOne = function() {
 			$scope.program = Programs.get({ 
 				programId: $stateParams.programId
 			});
-			$scope.getComments();
+
+			CustomRequest('GET','programs/'+ $stateParams.programId+'/comments',{},function(d){
+				$scope.comments = d;
+			},true);
+			//$scope.getComments();
 		};
 
-		$scope.getComments = function()
-		{
-			//console.log
-			$http.get('/programs/'+ $scope.program._id +'/comments').success(function(res){
-				console.log(res);
-				$scope.comments=res;
-			});
-		};
-		$scope.addComments = function()
-		{
-			
-			var comment = new Comments({
-				comment: this.comment,
-			});
-			alert('ok');
-		};
 		// $scope.getComments = function()
 		// {
-		// 	$scope.comments = Comments.get({
-		// 		programId: $stateParams.programId
+		// 	//console.log
+		// 	$http.get('/programs/'+ $scope.program._id +'/comments').success(function(res){
+		// 		console.log(res);
+		// 		$scope.comments=res;
 		// 	});
 		// };
-	}
+		$scope.addComments = function(program,comments)
+		{
+			CustomRequest('POST','programs/'+ $stateParams.programId+'/comments',{comment:$scope.comment},function(){$location.path('programs/'+ $stateParams.programId);},true);
+			$scope.findOne();
+			$scope.comment = '';
+		};
+		$scope.doLike = function(program,likes) {
+			$scope.showLike = true;
+			$scope.showLike= false;
+  			CustomRequest('PUT','programs/'+ $stateParams.programId +'/likes',{like:$scope.like}, function(res){
+
+  				$scope.likes.push(res);
+  				$location.path('programs/'+ $stateParams.programId);
+  				
+  		},true);
+  			//$scope.findOne();
+  			
+
+};		$scope.unLike = function(like){
+		 $scope.showLike=true;
+CustomRequest('DELETE','programs/'+ $stateParams.programId +'/likes/'+like._id,{}, function(res){
+
+				var index = $scope.likes.index(like);
+  				$scope.likes.splice(index,1);
+  				//$location.path('programs/'+ $stateParams.programId);
+
+  		},true);
+
+	};
+}
 ]);
+
+
+
+
+// app.factory('Progs',['$http', function($http){
+// 	var o = {
+//     progs: []
+//   };
+//   o.like = function(program) {
+//   	console.log(program._id);
+//   return $http.put('/programs/' + program._id + '/likes')
+//     .success(function(data){
+//       program.likes += 1;
+//     });
+// };
+// 	o.addComment = function(id, comment) {
+// 	  return $http.post('/posts/' + id + '/comments', comment);
+// 	};
+//   return o;
+// }]);

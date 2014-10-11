@@ -14,11 +14,9 @@ var mongoose = require('mongoose'),
  * Create a Program
  */
 exports.create = function(req, res) {
-	console.log(req.body);
 
 	var program = new Program(req.body);
 
-	console.log(program);
 
 	program.user = req.user;
 
@@ -37,7 +35,15 @@ exports.create = function(req, res) {
  * Show the current Program
  */
 exports.read = function(req, res) {
-	res.jsonp(req.program);
+	Like.find({user:req.user._id}).exec(function(err, like){
+		if(err)
+			return res.status(400).send({message:'Opps.. my bad'});
+		else
+		{
+			req.program.userLike = like;
+			res.jsonp(req.program);
+		}
+	});
 };
 
 /**
@@ -89,11 +95,16 @@ exports.list = function(req, res) { Program.find().sort('-created').populate('us
 		}
 	});
 };
+// exports.like = function(req,res,next){
+// 	req.program.like(function(err, program){
+// 		res.json(program);
+// 	});
+// };
 exports.search = function(req,res){	
 
 	var $or = {$or:[]};
 	var checkQuery = function(){
-		if (req.query.q && req.query.q.length >0){
+		if (req.query.location && req.query.location.length >0){
 			$or.$or.push({location : new RegExp(req.query.q, 'i')});
 		}
 		if (req.query.category && req.query.category.length > 1){
@@ -112,7 +123,7 @@ exports.search = function(req,res){
 			});
 		} else {
 			res.jsonp(programs);
-			console.log(req.body);
+			//console.log(req.body);
 		}
 	});
 };
@@ -120,7 +131,7 @@ exports.search = function(req,res){
 /**
  * Program middleware
  */
-exports.programByID = function(req, res, next, id) { Program.findById(id).populate('comments').populate('user').populate({ path: 'comments.user', model: 'User' }).populate('likes','like').exec(function(err, program) {
+exports.programByID = function(req, res, next, id) { Program.findById(id).populate('comments').populate('user').populate('likes','like').exec(function(err, program) {
 		if (err) return next(err);
 		if (! program) return next(new Error('Failed to load Program ' + id));
 		req.program = program ;

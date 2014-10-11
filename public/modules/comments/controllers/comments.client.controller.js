@@ -9,7 +9,7 @@ angular.module('comments').controller('CommentsController', ['$scope', '$statePa
 		$scope.create = function() {
 			// Create new Comment object
 			var comment = new Comments ({
-				comment: $scope.comment
+				comment: this.comment
 			});
 
 			// Redirect after save

@@ -24,14 +24,22 @@
                         <input type="text" data-ng-model="location" id="location" class="form-control" placeholder="Location" required>
                     </div>
                     <label class="control-label" for="programDate">Event Date</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="programDate" id="programDate" class="form-control" placeholder="YYYY/MM/DD" required>
+                     <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                          <input type="text" data-ng-model="programDate" id="programDate" class="form-control  datepicker" required datepicker-popup="{{format}}"is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                          <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                          </span>
+                        </div>
                     </div>
+                </div>
                     <label class="control-label" for="description">Description</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="description" id="description" class="form-control" placeholder="Enter Event Description" required>
-                    </div>
+                        <input type="text" data-ng-model="description" id="description" class="form-control fieldset" placeholder="Enter Event Description" required>
+                    </div><br>
                     <div class="controls">
+                    <label class="control-label" for="upload">Image</label>
                         <input type="file" name="upload" data-ng-file-select="onFileSelect($files)" accept="image/*">
                     </div>
                 </div>

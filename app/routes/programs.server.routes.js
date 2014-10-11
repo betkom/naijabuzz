@@ -8,13 +8,14 @@ module.exports = function(app) {
 	app.route('/programs')
 		.get(programs.list)
 		.post(users.requiresLogin, programs.create);
-	app.route('/programs/search/')
+	app.route('/programs/search')
 		.get(programs.search);
 	app.route('/programs/:programId')
 		.get(programs.read)
 		.put(users.requiresLogin, programs.hasAuthorization, programs.update)
 		.delete(users.requiresLogin, programs.hasAuthorization, programs.delete);
-
+	// app.route('/programs/:programId/likes')
+	// 	.put(users.requiresLogin,programs.like);	
 	// Finish by binding the Program middleware
 	app.param('programId', programs.programByID);
 };
