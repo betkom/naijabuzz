@@ -13,6 +13,10 @@ angular.module('programs').config(['$stateProvider',
 			url: '/programs/create',
 			templateUrl: 'modules/programs/views/create-program.client.view.html'
 		}).
+		state('searchProgram', {
+			url: '/programs/search',
+			templateUrl: 'modules/programs/views/search-program.client.view.html'
+		}).
 		state('viewProgram', {
 			url: '/programs/:programId',
 			templateUrl: 'modules/programs/views/view-program.client.view.html'

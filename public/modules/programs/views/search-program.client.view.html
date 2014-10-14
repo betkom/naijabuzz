@@ -1,0 +1,10 @@
+<section data-ng-controller="ProgramsController">
+	<div class="eventResult">
+	<h1 ng-hide = "noResult"> <span data-ng-bind="searchResults.length"></span> Result(s) found</h1>
+		<div class="evtDisplay" data-ng-repeat="program in searchResults">
+			<img src="{{program.image[0].path}}" alt="" width="150px" height="180px"/>
+			<h4 data-ng-bind="program.name"></h4>
+		</div>
+		<h1 ng-show="noResult">No Event found</h1>
+	</div>
+<section>

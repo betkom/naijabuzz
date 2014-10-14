@@ -1,5 +1,17 @@
+body{
+	background: url('../img/loaders/background2.png');
+}
+header.navbar.navbar-fixed-top.navbar-inverse.ng-scope{
+	background: rgba(255,255,255, 0);
+}
+.navbar-inverse .navbar-nav > li > a{
+	color: green;
+}
 .content {
 	margin-top: 50px;
+}
+.navbar-header{
+	
 }
 .undecorated-link:hover {
 	text-decoration: none;
@@ -12,4 +24,75 @@
 }
 .ng-valid.ng-dirty{
     border-color:#78FA89;
+}
+.input-group{
+	width:200px;
+}
+.jumbotron{
+	color: gray;
+	background: rgba(255,255,255,.1);
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.welcome{
+	text-align: center;
+	color: green;
+}
+.welcome h1{
+	font-size: 4em;
+}
+.welcomeBox{
+	padding-top: 10%;
+	padding-bottom: 10%;
+}
+.miniBox{
+	color: green;
+	width: 30%;
+	margin-right: 15px;
+	background: url('../img/loaders/preview.jpg'); 
+	border-radius: 50%;
+	vertical-align: center;
+	padding-top: 12%;
+	padding-bottom: 12%;
+}
+.miniBox:hover{
+	background: rgba(255,255,255, .1);
+}
+.welcome2{
+	color: green;
+	text-align: center;
+	vertical-align: center;
+	padding-top: 15%;
+	padding-bottom: 15%;
+	background: rgb(10,10,10);
+}
+.welcome2 h2{
+	font-family: Helvetica;
+}
+
+/*View Program page*/
+.programInfo{
+	background: rgb(2,2,2);
+}
+.page-header, .lead{
+	color: blue;
+}
+.descriptionBox{
+	width: 300px;
+}
+.commentBox{
+	margin-top: 20px;
+	padding-top: 15px;
+	border: solid 1px gray;
+	vertical-align: center;
+	width: 25%;
+}
+.commentBox p{
+	margin-left: 10px;
+}
+.commentBox .cmtstart{
+	margin-left: 5px;
+}
+.lead1{
+	font-style: italic;
 }

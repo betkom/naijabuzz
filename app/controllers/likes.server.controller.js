@@ -17,7 +17,7 @@ exports.create = function(req, res) {
 	//like.like +=1;
 	like.user = req.user;
 	like.program = program;
-	program.like.push(like);
+	program.likes.push(like);
 
 	like.save(function(err) {
 		if (err) {
@@ -63,7 +63,7 @@ exports.update = function(req, res) {
 };
 
 /**
- * Delete an Like
+ * Delete a Like
  */
 exports.delete = function(req, res) {
 	var like = req.like ;
@@ -97,7 +97,7 @@ exports.delete = function(req, res) {
 /**
  * List of Likes
  */
-exports.list = function(req, res) { Like.find().sort('-created').populate('user', 'displayName').exec(function(err, likes) {
+exports.list = function(req, res) { Like.find({program:req.program}).sort('-created').populate('user', 'displayName').exec(function(err, likes) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)

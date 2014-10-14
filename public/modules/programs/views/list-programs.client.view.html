@@ -3,18 +3,22 @@
         <h1>Programs</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="program in programs" data-ng-href="#!/programs/{{program._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="program.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="program.user.displayName"></span>
-			</small>
-            <img src="{{program.image[0].path}}" alt=""/>
-			<h4 class="list-group-item-heading" data-ng-bind="program.name"></h4>
-            <span data-ng-bind="program.comments.length"></span>{{" comment(s)"}}
-            <span data-ng-bind="program.likes.length"></span>{{" like(s)"}}
-        </a>
+    <div class="row">    
+            <div class = "col-md-4" data-ng-repeat="program in programs">    
+            <a data-ng-href="#!/programs/{{program._id}}" class="list-group-item">
+    			<small class="list-group-item-text">
+    				Posted on
+    				<span data-ng-bind="program.created | date:'medium'"></span>
+    				by
+    				<span data-ng-bind="program.user.displayName"></span>
+    			</small>
+                <img src="{{program.image[0].path}}" alt="" width="150px" height="180px"/>
+    			<h4 class="list-group-item-heading" data-ng-bind="program.name"></h4>
+                <span data-ng-bind="program.comments.length"></span>{{" comment(s)"}}
+                <span data-ng-bind="program.likes.length"></span>{{" like(s)"}}
+            </a>
+            </div>
+        </div>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!programs.$resolved || programs.length">
     	No Programs yet, why don't you <a href="/#!/programs/create">create one</a>?

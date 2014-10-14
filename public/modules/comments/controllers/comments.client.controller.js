@@ -52,7 +52,9 @@ angular.module('comments').controller('CommentsController', ['$scope', '$statePa
 
 		// Find a list of Comments
 		$scope.find = function() {
-			$scope.comments = Comments.query();
+			$scope.comments = Comments.query({
+				programId: $stateParams.programId
+			});
 		};
 
 		// Find existing Comment

@@ -35,16 +35,22 @@ exports.create = function(req, res) {
  * Show the current Program
  */
 exports.read = function(req, res) {
-	Like.find({user:req.user._id}).exec(function(err, like){
-		if(err)
-			return res.status(400).send({message:'Opps.. my bad'});
-		else
-		{
-			req.program.userLike = like;
-			res.jsonp(req.program);
-		}
-	});
+	if(req.user)
+	{
+		Like.find({user:req.user,program:req.program}).limit(1).populate('user','_id').exec(function(err,like){
+			if(!err)
+			{
+				var response = {program:req.program,userlike:like.length>0?like:false};
+				console.log(response);
+				res.jsonp(response);
+			}
+		});
+	}
+	else
+		res.jsonp({program:req.program,userlike:null});
 };
+
+
 
 /**
  * Update a Program
@@ -101,14 +107,14 @@ exports.list = function(req, res) { Program.find().sort('-created').populate('us
 // 	});
 // };
 exports.search = function(req,res){	
-
+	console.log(req.query);
 	var $or = {$or:[]};
 	var checkQuery = function(){
 		if (req.query.location && req.query.location.length >0){
-			$or.$or.push({location : new RegExp(req.query.q, 'i')});
+			$or.$or.push({location : new RegExp(req.query.location, 'i')});
 		}
 		if (req.query.category && req.query.category.length > 1){
-			$or.$or.push({category: new RegExp(req.query.category)});
+			$or.$or.push({category: new RegExp(req.query.category, 'i')});
 		}
 		if(req.query.programDate && req.query.programDate.length>1)
 		{
@@ -122,6 +128,7 @@ exports.search = function(req,res){
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			console.log(programs);
 			res.jsonp(programs);
 			//console.log(req.body);
 		}
@@ -131,7 +138,7 @@ exports.search = function(req,res){
 /**
  * Program middleware
  */
-exports.programByID = function(req, res, next, id) { Program.findById(id).populate('comments').populate('user').populate('likes','like').exec(function(err, program) {
+exports.programByID = function(req, res, next, id) { Program.findById(id).populate('user','displayName').populate('likes','like').exec(function(err, program) {
 		if (err) return next(err);
 		if (! program) return next(new Error('Failed to load Program ' + id));
 		req.program = program ;

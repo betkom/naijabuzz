@@ -23,10 +23,6 @@ angular.module('likes').controller('LikesController', ['$scope', '$stateParams',
 			});
 		};
 
-		$scope.haha = function(){
-			console.log('haha');
-		};
-
 		// Remove existing Like
 		$scope.remove = function( like ) {
 			if ( like ) { like.$remove();

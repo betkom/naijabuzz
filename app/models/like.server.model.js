@@ -10,10 +10,10 @@ var mongoose = require('mongoose'),
  * Like Schema
  */
 var LikeSchema = new Schema({
-	// like: {
-	// 	type: Number,
-	// 	default: 0
-	// },
+	like: {
+		type: Number,
+		default: 0
+	},
 	created: {
 		type: Date,
 		default: Date.now

@@ -62,8 +62,7 @@ exports.update = function(req, res) {
  * List of Events
  */
 exports.list = function(req, res) { 
-	console.log(req.params);
-	Comment.find({program:req.params.programId}).sort('-created').populate('user', 'displayName').exec(function(err, comments) {
+	Comment.find({program:req.program}).sort('-created').populate('user', 'displayName').exec(function(err, comments) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
