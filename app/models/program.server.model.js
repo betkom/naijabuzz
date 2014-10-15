@@ -36,7 +36,7 @@ var ProgramSchema = new Schema({
 	programDate:{
 		type: String,
 		default: '',
-		required: 'yyyy/mm/dd'
+		required: 'Please enter date in this format yyyy/mm/dd'
 	},
 	image:[{
 		path: {
