@@ -1,10 +1,28 @@
 <section data-ng-controller="ProgramsController">
 	<div class="eventResult">
 	<h1 ng-hide = "noResult"> <span data-ng-bind="searchResults.length"></span> Result(s) found</h1>
-		<div class="evtDisplay" data-ng-repeat="program in searchResults">
+	 <div class="list-group">
+    <div class="row">    
+            <div class = "col-md-4" data-ng-repeat="program in searchResults">    
+            <a data-ng-href="#!/programs/{{program._id}}" class="list-group-item">
+    			<!-- <small class="list-group-item-text">
+    				Posted on
+    				<span data-ng-bind="program.created | date:'medium'"></span>
+    				by
+    				<span data-ng-bind="program.user.displayName"></span>
+    			</small> -->
+                <img src="{{program.image[0].path}}" alt="" width="150px" height="180px"/>
+    			<h4 class="list-group-item-heading" data-ng-bind="program.name"></h4>
+                <span data-ng-bind="program.comments.length"></span>{{" comment(s)"}}
+                <span data-ng-bind="program.likes.length"></span>{{" like(s)"}}
+            </a>
+            </div>
+        </div>
+    </div>
+		<!-- <div class="evtDisplay" data-ng-repeat="program in searchResults">
 			<img src="{{program.image[0].path}}" alt="" width="150px" height="180px"/>
 			<h4 data-ng-bind="program.name"></h4>
-		</div>
+		</div> -->
 		<h1 ng-show="noResult">No Event found</h1>
 	</div>
 <section>

@@ -1,25 +1,33 @@
 @import url(//fonts.googleapis.com/css?family=Poiret+One|Lobster|Shadows+Into+Light|Gloria+Hallelujah|Signika|Nunito:400,700|Dancing+Script|Coming+Soon);
 
+/*******************
+	GENERAL
+*******************/
 body{
 	background: url('../img/loaders/background2.png');
 }
 header.navbar.navbar-fixed-top.navbar-inverse.ng-scope{
-	background: rgba(255,255,255, 0);
+	background: rgba(0,0,0, 0.8);
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 .navbar-brand{
 	font-family: "Nunito" sans-serif;
 	font-weight: bold;
-	padding-left: 10px;
+	padding-left: 25px;
+
 }
-.navbar-brand::before{
+.naijabuzzlogo{
+	float: left;
+}
+/*.navbar-brand::before{
 	content: url('../img/brand/naijabuzzlogo.png');
 	padding-right: 10px;
-}
+}*/
 .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand{
-	text-shadow: 1px 1px 3px #fff; 
-	font-size: 3em;
+	/*text-shadow: 1px 1px 3px #fff; */
+	font-size: 2em;
+	/*vertical-align: middle;*/
 }
 .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand, .navbar-inverse .navbar-nav > li > a{
 	color: green;
@@ -56,6 +64,14 @@ header.navbar.navbar-fixed-top.navbar-inverse.ng-scope{
 .input-group{
 	width:200px;
 }
+.socialIcon{
+	width: 50px;
+	height: 50px;
+}
+.page-header h1{
+	color: green;
+	font-family: 'Gloria Halleluyah' sans-serif;
+}
 .jumbotron{
 	margin-top: 30px;
 	color: gray;
@@ -76,7 +92,7 @@ header.navbar.navbar-fixed-top.navbar-inverse.ng-scope{
 .outerWelcome{
 	margin-left: 10%;
 	background: url('../img/loaders/party.jpg')
-}
+}			
 .welcomeBox{
 	padding-top: 5%;
 	padding-bottom: 5%;
@@ -168,6 +184,37 @@ header.navbar.navbar-fixed-top.navbar-inverse.ng-scope{
 .show-signup{
 	color:green;
 }
+
+/******************
+	SIGN IN PAGE
+******************/
+.signinBox{
+	background: rgba(255,255,255, .1);
+	margin-top: 50px;
+	border-radius: 10%;
+	color: green;
+	padding-bottom: 15px;
+	margin-bottom: 30px;
+}
+.signinBox h3{
+	font-size: 1.3em;
+}
+
+
+/*********************
+	LIST EVENTS PAGE
+**********************/
+.eventBox{
+	text-align: center;	
+}
+a.list-group-item:hover{
+	background: rgba(0,0,0, .6);
+}
+a.list-group-item{
+	background: rgba(0,0,0, .8);
+	color: #fff;
+	border: solid 1px #ccc;
+}
 /*******************
 	MAP CONTAINER
 *******************/
@@ -180,6 +227,7 @@ header.navbar.navbar-fixed-top.navbar-inverse.ng-scope{
 
 
 footer{
+	margin-bottom: 0;
 	color: green;
 	padding: 10px 5px;
 	text-align: center;

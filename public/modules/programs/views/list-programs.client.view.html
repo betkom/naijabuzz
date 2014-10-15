@@ -1,21 +1,21 @@
 <section data-ng-controller="ProgramsController" data-ng-init="find()">
     <div class="page-header">
-        <h1>Programs</h1>
+        <h1>Events</h1>
     </div>
     <div class="list-group">
     <div class="row">    
-            <div class = "col-md-4" data-ng-repeat="program in programs">    
+            <div class = "col-md-4 eventBox" data-ng-repeat="program in programs">    
             <a data-ng-href="#!/programs/{{program._id}}" class="list-group-item">
-    			<small class="list-group-item-text">
+    			<!-- <small class="list-group-item-text">
     				Posted on
     				<span data-ng-bind="program.created | date:'medium'"></span>
     				by
     				<span data-ng-bind="program.user.displayName"></span>
-    			</small>
+    			</small> -->
                 <img src="{{program.image[0].path}}" alt="" width="150px" height="180px"/>
     			<h4 class="list-group-item-heading" data-ng-bind="program.name"></h4>
-                <span data-ng-bind="program.comments.length"></span>{{" comment(s)"}}
-                <span data-ng-bind="program.likes.length"></span>{{" like(s)"}}
+               <p> <span data-ng-bind="program.comments.length"></span>{{" comment(s)"}}</p>
+               <p><span data-ng-bind="program.likes.length"></span>{{" like(s)"}}</p>
             </a>
             </div>
         </div>

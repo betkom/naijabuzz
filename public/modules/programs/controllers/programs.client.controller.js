@@ -142,16 +142,22 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
 
         //console.log(google);
 
-
+        function fixDate(i)
+        {
+             i = i.toString();
+             return i.length === 1?'0'+i:i;
+        }
         //Find existing Program
         $scope.findOne = function() {
             $scope.programContent = Programs.get({ 
 				programId: $stateParams.programId
-			},function(){
+			},function(response){
                 console.log(google);
                 console.log(google.maps);
                 console.log(google.maps.Geocoder);
                 console.log($scope.programContent.program.location);
+
+                $scope.qrcodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=';
 
                 geocoder = new google.maps.Geocoder();
                 var options = {
@@ -178,6 +184,12 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
 
 
 				$scope.program = $scope.programContent.program;
+                
+                var cdate = new Date($scope.program.programDate);
+                cdate = cdate.getFullYear() + '-' + fixDate(cdate.getMonth()+1) + '-' + fixDate(cdate.getDate());
+                var qrData = encodeURIComponent('Title: '+$scope.program.name+'\nDescription: '+$scope.program.description+'\nDate: '+cdate+'\nLocation: '+$scope.program.location);
+
+                $scope.qrcodeUrl = $scope.qrcodeUrl + qrData;
                 delete $scope.programContent.program;
                 delete $scope.programContent.userlike;
 
