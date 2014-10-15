@@ -9,15 +9,48 @@ var mongoose = require('mongoose'),
 	_ = require('lodash');
 
 /**
- * Create a Like
+ * Delete a Like
  */
-exports.create = function(req, res) {
+exports.delete = function(req, res) {
+	var like = req.like ;
+	var program = req.program;
+
+	var index = like&&like._id?program.likes.indexOf(like._id):-1;
+	console.log(index,'indexOf like');
+	if(index>-1)
+		program.likes.splice(index,1);
+	
+
+	like.remove(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			program.save(function(err){
+				if(err)
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				else{
+					like.like = false;
+					res.jsonp(like);
+				}
+			});
+			
+		}
+	});
+};
+
+function saveLike(req,res)
+{
 	var like = new Like();
 	var program = req.program;
 	//like.like +=1;
 	like.user = req.user;
 	like.program = program;
 	program.likes.push(like);
+	like.like = true;
 
 	like.save(function(err) {
 		if (err) {
@@ -32,6 +65,34 @@ exports.create = function(req, res) {
 				else 
 					res.status(400).send({message:errorHandler.getErrorMessage(err)});
 			});
+		}
+	});
+}
+/**
+ * Create a Like
+ */
+exports.create = function(req, res) {
+	Like.find({program:req.program,user:req.user}).exec(function(err,likes){
+
+		if(err)
+		{
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+		else
+		{
+			console.log(likes,likes.length);
+			if(likes.length===0)
+			{
+				saveLike(req,res);
+				//res.jsonp(likes);
+			}	
+			else
+			{
+				req.like = likes[0];
+				exports.delete(req,res);
+			}
 		}
 	});
 };
@@ -62,37 +123,6 @@ exports.update = function(req, res) {
 	});
 };
 
-/**
- * Delete a Like
- */
-exports.delete = function(req, res) {
-	var like = req.like ;
-	var program = req.program;
-
-	var index = program.likes.indexOf(like._id);
-	
-	if(index>-1)
-		program.likes.splice(index,1);
-	
-
-	like.remove(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			program.save(function(err){
-				if(err)
-					return res.status(400).send({
-						message: errorHandler.getErrorMessage(err)
-					});
-				else
-					res.jsonp(like);
-			});
-			
-		}
-	});
-};
 
 /**
  * List of Likes

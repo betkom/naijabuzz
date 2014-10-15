@@ -51,7 +51,7 @@
 			{% block content %}{% endblock %}
 		</section>
 	</section>
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&region=NG&sensor=false"></script>
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};
@@ -69,5 +69,6 @@
 
 	{% endif %}
 </body>
+<footer> &copy Tolulope Komolafe | Andela</footer>
 
 </html>

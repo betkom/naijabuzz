@@ -11,8 +11,8 @@ var mongoose = require('mongoose'),
  */
 var LikeSchema = new Schema({
 	like: {
-		type: Number,
-		default: 0
+		type: Boolean,
+		default: true
 	},
 	created: {
 		type: Date,

@@ -4,7 +4,9 @@
 angular.module('programs').controller('ProgramsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Programs', 'Comments','ProgramsComment', 'Likes','ProgramsLike', 'Search',
     function($scope, $http, $stateParams, $location, Authentication, Programs, Comments, ProgramsComment, Likes, ProgramsLike, Search) {
         $scope.authentication = Authentication;
+         var geocoder;
 
+        // SearchResults for Programs
         $scope.searchResults = Search.searchResults;
         // console.log($scope.searchResults);
         if($scope.searchResults.length < 1) {
@@ -12,8 +14,6 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
         }else{
         	$scope.noResult = false;
         }
-
-
         // Autocomplete
         $scope.location = '';
         $scope.options2 = {
@@ -143,6 +143,7 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
             // console.log($scope.programs);
         };
 
+        //console.log(google);
 
 
         //Find existing Program
@@ -150,31 +151,47 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
             $scope.programContent = Programs.get({ 
 				programId: $stateParams.programId
 			},function(){
+                console.log(google);
+                console.log(google.maps);
+                console.log(google.maps.Geocoder);
+                console.log($scope.programContent.program.location);
+
+                // geocoder = new google.maps.Geocoder();
+                // var options = {
+                //     zoom: 5
+                // }
+                // $scope.map = new google.maps.Map(document.getElementById("map_canvas"), options);
+                // var sAddress = $scope.programContent.program.location;
+                // geocoder.geocode({'address': sAddress}, function(results,status){});
+                // if (status = google.maps.GeocoderStatus.OK){
+                //     $scope.marker = new google.maps.Marker({
+                //         map: $scope.map,
+                //         position: results[0].geometry.location,
+                //         animation: google.maps.Animation.BOUNCE});
+                //     $scope.map.setCenter(results[0].geometry.location);
+                    
+                // }else{
+                //         console.log("can't geocode")
+                // }
+
+
+
 				$scope.program = $scope.programContent.program;
-				$scope.hasCommented = $scope.programContent.usercomment?true:false;
+                delete $scope.programContent.program;
+                delete $scope.programContent.userlike;
+
+                for(  var i in $scope.programContent ){
+                    $scope.program[i] = $scope.programContent[i];
+                }
+				$scope.hasLiked = $scope.programContent.userlike?true:false;
 			});
 			//Use this method instead
 			$scope.comments = ProgramsComment.query({
 				programId: $stateParams.programId
 			});
-            $scope.checkLiked();
+            //$scope.checkLiked();
         };
-        $scope.hasCommented = null;
 
-        $scope.checkLiked = function(){
-            console.log("yes");
-             $scope.likesResponse = ProgramsLike.query({programId: $stateParams.programId}).$promise.then(function(response) {
-             $scope.likes = response;                    
-                    angular.forEach($scope.likes, function(value, key) {
-                    console.log($scope.authentication.user._id); 
-                        if($scope.authentication.user._id === value.user._id){
-                            $scope.hasLiked = true;                        
-                        }else{
-                            $scope.hasLiked = false;
-                        }
-                    });  
-             });        
-        };
         $scope.addComments = function() {
             // Create new Comment object
            var comment = new ProgramsComment({
@@ -194,37 +211,37 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
 		};
         $scope.doLike = function() {
             // Create new Like object
-            var like = new ProgramsLike({
-                like: $scope.newLike
-            });
+            var likeObject = {like:true};
+            //if($scope.hasLiked && typeof $scope.hasLiked === typeof {})
+            //   likeObject = $scope.hasLiked;
+
+            var like = new ProgramsLike(likeObject);
             //Redirect after save
             like.$save({
                 programId: $stateParams.programId
-            }, function(response) {
-                $scope.hasLiked = true;
-                $scope.findOne();
-                console.log(response);
+            },function(response) {
+                $scope.hasLiked = response;
+                if(response)
+                {
+                    if(response.like)
+                    {
+                        $scope.program.likes.push(response._id);
+                    }
+                    else
+                    {
+                        var i = $scope.program.likes.indexOf(response._id);
+                        if(i>-1)
+                        {
+                            $scope.program.likes.splice(i,1);
+                            $scope.hasLiked = false;
+                        }
+                    }
+               }
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
             });            
         };
 
-        $scope.unLike = function(){
-        	$scope.likesResponse = ProgramsLike.query({programId: $stateParams.programId}).$promise.then(function(response) {
-             $scope.likesData = response;
-                console.log($scope.authentication.user._id); 
-              angular.forEach($scope.likes, function(value, key) {
-                    if($scope.authentication.user._id === value.user._id){
-                        $scope.likes.splice(key, 1);
-                        console.log('i found it');
-                        console.log($scope.likes.length);                       
-                    }
-                });
-          });
-              $scope.hasLiked = false;
-              $scope.findOne();
-      
-        };
 
     }
 ]);

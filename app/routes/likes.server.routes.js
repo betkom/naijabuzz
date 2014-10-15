@@ -12,6 +12,7 @@ module.exports = function(app) {
 
 	app.route('/programs/:programId/likes/:likeId')
 		.get(likes.read)
+		.post(users.requiresLogin, likes.create)
 		.put(users.requiresLogin, likes.hasAuthorization, likes.update)
 		.delete(users.requiresLogin, likes.hasAuthorization, likes.delete);
 

@@ -37,7 +37,7 @@ exports.create = function(req, res) {
 exports.read = function(req, res) {
 	if(req.user)
 	{
-		Like.find({user:req.user,program:req.program}).limit(1).populate('user','_id').exec(function(err,like){
+		Like.find({user:req.user,program:req.program}).populate('user','_id').exec(function(err,like){
 			if(!err)
 			{
 				var response = {program:req.program,userlike:like.length>0?like:false};
@@ -138,7 +138,7 @@ exports.search = function(req,res){
 /**
  * Program middleware
  */
-exports.programByID = function(req, res, next, id) { Program.findById(id).populate('user','displayName').populate('likes','like').exec(function(err, program) {
+exports.programByID = function(req, res, next, id) { Program.findById(id).populate('user','displayName').exec(function(err, program) {
 		if (err) return next(err);
 		if (! program) return next(new Error('Failed to load Program ' + id));
 		req.program = program ;

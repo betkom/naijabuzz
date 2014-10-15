@@ -16,7 +16,14 @@
 	                    	<div class="col-md-3">
 		                    	<div class="form-group">
 								    <label for="category" class="sr-only">Category</label>
-								    <input type="text" class="form-control" id="category" data-ng-model="category" placeholder="Category"/>
+								    <select  class="form-control" data-ng-model="category" id="category" placeholder="Choose Category">
+                            			<option value="Sports" selected>Sports</option>
+                           				<option value="Party">Party</option>
+                           				<option value="Launch">Launch Events</option>
+                           				<option value="Church">Church Events</option>
+                           				<option value="Others">Other Category</option>
+                        			</select>
+								    <!-- <input type="text" class="form-control" id="category" data-ng-model="category" placeholder="Category"/> -->
 							  	</div>
 							</div>
 	                        <div class="col-md-3">
@@ -32,7 +39,7 @@
 	                        </div>
 	                        <div class="col-md-3">
 		                    	<div class="form-group">
-	                        		<button class="schbtn btn btn-primary" ng-click="search()">Find Events</button>
+	                        		<button class="schbtn btn btn-success" ng-click="search()">Find Events</button>
 	                        	</div>                   
 	                    	</div>
                     	</div>
@@ -40,24 +47,30 @@
     </div>    
   	<div class="welcome" data-ng-hide="authentication.user">
   		<h1>NaijaBuzz</h1>
-	  	<div class="row welcomeBox">
-	  	<div class="col-md-4 miniBox">
-	  		<p>1. Are you feeling bored and you don't know fun events happening around you?</p>
-	  	</div>
-	  	<div class="col-md-4 miniBox">
-	  		<p>2. Do you wish to know events you can attend ahead so you can plan your Schedule?</p>
-	  	</div>
-	  	<div class="col-md-4 miniBox">
-	  		<p>3. NaijaBuzz is what you need.
-	  		Sign up to enjoy the Ultimate Experience of using NaijaBuzz</p>
-	  	</div>
-	 	</div>
+  		<div class="outerWelcome col-md-10">
+		  	<div class="row welcomeBox">
+		  	<div class="col-xs-12 col-md-3 miniBox">
+		  		<p>1. Are you feeling bored and you don't know fun events happening around you?</p>
+		  	</div>
+		  	<div class="col-xs-12 col-md-3 miniBox">
+		  		<p>2. Do you wish to know events you can attend ahead so you can plan your Schedule?</p>
+		  	</div>
+		  	<div class="col-xs-12 col-md-3 miniBox">
+		  		<p>3. NaijaBuzz is what you need.
+		  		Sign up to enjoy the Ultimate Experience of using NaijaBuzz</p>
+		  	</div>
+		 	</div>
+		 </div>
 	</div>
 	<div class="welcome2" data-ng-show="authentication.user">
-		<h2>Welcome</h2>
-		<p>Now that you are signed up, Get ready to have some fun</p>
-		<p>You can search for events you can attend</p>
-		<p>You can also create events you want people to know about<p>
+		<div class="outerWelcome col-md-9">
+		  	<div class="row welcomeBox2">
+		  	<h2>Welcome</h2>
+			<p>Now that you are signed up, Get ready to have some fun</p>
+			<p>You can search for events you can attend</p>
+			<p>You can also create events you want people to know about</p>
+		 	</div>
+		 </div>
 	</div>
 
 	 

@@ -12,7 +12,8 @@
                             <option value="Sports" selected>Sports</option>
                             <option value="Party">Party</option>
                             <option value="Launch">Launch Events</option>
-                            <option value="church">Church Events</option>
+                            <option value="Church">Church Events</option>
+                            <option value="Others">Other Category</option>
                         </select>
                     </div>
                     <label class="control-label" for="name">Name</label>
@@ -36,7 +37,8 @@
                 </div>
                 <label class="control-label" for="description">Description</label>
                 <div class="controls">
-                    <input type="text" data-ng-model="description" id="description" class="form-control fieldset" placeholder="Enter Event Description" required>
+                <textarea class="form-control" rows="3" data-ng-model="description" id="description" placeholder="Enter Event Description" required></textarea>
+                    <!-- <input type="text" data-ng-model="description" id="description" class="form-control fieldset" placeholder="Enter Event Description" required> -->
                 </div><br>
                 <div class="controls">
                     <label class="control-label" for="upload">Image</label>
