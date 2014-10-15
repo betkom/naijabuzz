@@ -29,9 +29,15 @@ header.navbar.navbar-fixed-top.navbar-inverse.ng-scope{
 	padding-bottom: 5px;
 	margin-top: 10px;
 }
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{
+	background: green;
+}
 .navbar-inverse .navbar-nav > li > a:hover{
 	background: green;
 }
+/*.navbar-inverse .navbar-nav > li > a:focus{
+	background: green;
+}*/
 .content {
 	margin-top: 50px;
 }
@@ -150,17 +156,31 @@ header.navbar.navbar-fixed-top.navbar-inverse.ng-scope{
 	SIGN UP PAGE
 ******************/
 .signupBox{
-	background: lightgreen;
+	background: rgba(255,255,255, .1);
 	margin-top: 50px;
+	border-radius: 10%;
+	color: green;
+	padding-bottom: 15px;
 }
-
+.signupBox h3{
+	font-size: 1.3em;
+}
+.show-signup{
+	color:green;
+}
+/*******************
+	MAP CONTAINER
+*******************/
 .mapResult{
 	border: solid 1px gray;
 	background: yellow;
+	height: 400px;
+	width: 400px;
 }
 
 
 footer{
 	color: green;
 	padding: 10px 5px;
+	text-align: center;
 }

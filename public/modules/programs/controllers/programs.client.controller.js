@@ -5,7 +5,6 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
     function($scope, $http, $stateParams, $location, Authentication, Programs, Comments, ProgramsComment, Likes, ProgramsLike, Search) {
         $scope.authentication = Authentication;
          var geocoder;
-
         // SearchResults for Programs
         $scope.searchResults = Search.searchResults;
         // console.log($scope.searchResults);
@@ -68,8 +67,6 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
             $scope.select = $file;
             $scope.stringFiles = [];
 
-            for (var i in $scope.select) {
-                console.log(i);
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
@@ -79,8 +76,8 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
                     console.log($scope.stringFiles);
                 };
 
-                reader.readAsDataURL($scope.select[i]);
-            }
+                reader.readAsDataURL($scope.select[0]);
+            
         };
 
         // Create new Program object
@@ -156,23 +153,27 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
                 console.log(google.maps.Geocoder);
                 console.log($scope.programContent.program.location);
 
-                // geocoder = new google.maps.Geocoder();
-                // var options = {
-                //     zoom: 5
-                // }
-                // $scope.map = new google.maps.Map(document.getElementById("map_canvas"), options);
-                // var sAddress = $scope.programContent.program.location;
-                // geocoder.geocode({'address': sAddress}, function(results,status){});
-                // if (status = google.maps.GeocoderStatus.OK){
-                //     $scope.marker = new google.maps.Marker({
-                //         map: $scope.map,
-                //         position: results[0].geometry.location,
-                //         animation: google.maps.Animation.BOUNCE});
-                //     $scope.map.setCenter(results[0].geometry.location);
+                geocoder = new google.maps.Geocoder();
+                var options = {
+                    zoom: 17
+                }
+                var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+                var sAddress = $scope.programContent.program.location;
+                geocoder.geocode({'address': sAddress}, function(results,status){
+                    console.log(results, status);
+                    console.log(results[0].geometry.location);
+                   if (status === google.maps.GeocoderStatus.OK){
+                    $scope.marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location,
+                        animation: google.maps.Animation.BOUNCE});
+                    map.setCenter(results[0].geometry.location);
                     
-                // }else{
-                //         console.log("can't geocode")
-                // }
+                }else{
+                        console.log("can't geocode");
+                } 
+                });
+                
 
 
 

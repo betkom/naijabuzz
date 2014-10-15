@@ -57,7 +57,7 @@ angular.module('core').factory('Search', ['$http', function($http) {   
     SearchObject.getSearchResults = function() {
 		console.log(SearchObject.searchResults);
     	return SearchObject.searchResults;
-    }
+    };
 
     return SearchObject;
 }]);
