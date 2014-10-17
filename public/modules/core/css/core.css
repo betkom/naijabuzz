@@ -172,12 +172,15 @@ footer {
 .descriptionBox {
     width: 300px;
 }
-.forAll p, .descriptionBox, .map h2, .qrCode h3,.commentBox p  {
+.forAll p, .descriptionBox, .map h2, .qrCode h3,.commentBox p, span.evtName  {
     font-family: 'Lato' sans-serif;
 }
 .forAll p, .descriptionBox, .map h2, .qrCode h3{
 	color: #ccc;
 }
+span.evtName{
+	font-weight: bold;
+} 
 .commentEntry {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -193,7 +196,7 @@ footer {
     font-family: 'Lato' sans-serif;
     font-size: 1em;
 }
-.commentBox small {
+.commentBox small, span.evtName {
     color: #24be31;
 }
 .commentBox2 {
@@ -282,6 +285,9 @@ h3.col-md-12.text-center {
 }
 .eventTitle p {
     text-align: right;
+}
+.eventTitle span{
+	margin-right: 5px;
 }
 .eventBox .eventTitle>h4 {
     color: #ebebeb;

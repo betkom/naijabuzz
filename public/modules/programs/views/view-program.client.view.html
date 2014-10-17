@@ -18,12 +18,13 @@
                     Posted on
                     <span data-ng-bind="program.created | date:'mediumDate'"></span>
                     by
-                    <span data-ng-bind="program.user.displayName"></span>
+                </em>
+                    <span  class="evtName" data-ng-bind="program.user.displayName"></span>
                     <p class="eventTitle">
                         <span data-ng-bind="program.comments.length"></span><i class="glyphicon glyphicon-comment"></i>
                         <span data-ng-bind="program.likes.length"></span><i class="glyphicon glyphicon-thumbs-up"></i>
                     </p>
-                </em>
+                
             </small>
             <p class="lead" data-ng-bind="program.category"></p>
             <div>
