@@ -4,7 +4,7 @@
 *******************/
 
 body {
-    background: url('../img/loaders/background2.png');
+    background: url('/modules/core/img/loaders/background2.png');
     color: #fff;
 }
 input {
@@ -111,8 +111,8 @@ footer {
     font-family: "Nunito" sans-serif;
     text-shadow: 1px 1px 3px #fff;
 }
-.outerWelcome, .outerContact, .outerAbout {    
-    background: url('../img/loaders/party.jpg') no-repeat center center;
+.outerWelcome, .outerContact, .outerAbout,.welcome2 {    
+    background: url('/modules/core/img/loaders/party.jpg') no-repeat center center;
     background-size: cover;
 }
 .welcomeBox, .contactBox, .aboutBox {
@@ -145,9 +145,6 @@ footer {
     opacity: 1;
     color:#ebeaeb;
     transition: all 3s;
-}
-.welcome2 {
-    background: url('../img/loaders/party.jpg');
 }
 .welcomeBox2 {
     color: #fff;
