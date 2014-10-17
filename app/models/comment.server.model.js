@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
- * Event Schema
+ * Comment Schema
  */
 var CommentSchema = new Schema({
 	created: {
@@ -17,6 +17,7 @@ var CommentSchema = new Schema({
 	comment: {
 		type: String,
 		default: '',
+		required: 'Pls enter a comment',
 		trim: true
 	},
 	user: {

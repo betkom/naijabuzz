@@ -1,234 +1,370 @@
-@import url(//fonts.googleapis.com/css?family=Poiret+One|Lobster|Shadows+Into+Light|Gloria+Hallelujah|Signika|Nunito:400,700|Dancing+Script|Coming+Soon);
-
+@import url(//fonts.googleapis.com/css?family=Poiret+One|Lato|Roboto|Lobster|Signika|Nunito:400,700|Coming+Soon);
 /*******************
 	GENERAL
 *******************/
-body{
-	background: url('../img/loaders/background2.png');
-}
-header.navbar.navbar-fixed-top.navbar-inverse.ng-scope{
-	background: rgba(0,0,0, 0.8);
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-.navbar-brand{
-	font-family: "Nunito" sans-serif;
-	font-weight: bold;
-	padding-left: 25px;
 
+body {
+    background: url('../img/loaders/background2.png');
+    color: #fff;
 }
-.naijabuzzlogo{
-	float: left;
+input {
+    background: #ccc;
 }
-/*.navbar-brand::before{
-	content: url('../img/brand/naijabuzzlogo.png');
-	padding-right: 10px;
-}*/
-.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand{
-	/*text-shadow: 1px 1px 3px #fff; */
-	font-size: 2em;
-	/*vertical-align: middle;*/
+header.navbar.navbar-fixed-top.navbar-inverse.ng-scope {
+    background: rgba(0, 0, 0, 0.8);
+    padding-top: 10px;
+    transition: 500ms;
+    -webkit-transition: 500ms;
+    padding-bottom: 10px;
 }
-.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand, .navbar-inverse .navbar-nav > li > a{
-	color: green;
+header.navbar.navbar-fixed-top.navbar-inverse.ng-scope:hover {
+    background: rgba(0, 0, 0, 1);
 }
-.navbar-inverse .navbar-nav > li > a{
-	padding-top: 5px;
-	padding-bottom: 5px;
-	margin-top: 10px;
+.navbar-brand {
+    font-family: "Nunito" sans-serif;
+    font-weight: bold;
+    padding-left: 25px;
 }
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{
-	background: green;
+.naijabuzzlogo {
+    float: left;
 }
-.navbar-inverse .navbar-nav > li > a:hover{
-	background: green;
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    font-size: 2em;
 }
-/*.navbar-inverse .navbar-nav > li > a:focus{
-	background: green;
-}*/
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+    color: #24be31;
+}
+.navbar-inverse .navbar-nav > li > a, footer {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    font-family: "Roboto" sans-serif;
+}
+.navbar-nav {
+    float: right;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background: #24be31;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+    background: #24be31;
+}
+.navAbout, .navContact {
+    float: right;
+}
 .content {
-	margin-top: 50px;
+    margin-top: 50px;
 }
 .undecorated-link:hover {
-	text-decoration: none;
+    text-decoration: none;
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-	display: none !important;
+    display: none !important;
 }
-.ng-invalid.ng-dirty{
-    border-color:#FA787E;
+.ng-invalid.ng-dirty {
+    border-color: #FA787E;
 }
-.ng-valid.ng-dirty{
-    border-color:#78FA89;
+.ng-valid.ng-dirty {
+    border-color: #78FA89;
 }
-.input-group{
-	width:200px;
+.input-group {
+    width: 200px;
 }
-.socialIcon{
-	width: 50px;
-	height: 50px;
+.socialIcon {
+    width: 50px;
+    height: 50px;
 }
-.page-header h1{
-	color: green;
-	font-family: 'Gloria Halleluyah' sans-serif;
+.page-header h1 {
+    color: #24be31;
+    font-family: 'Poiret One' sans-serif;
 }
-.jumbotron{
-	margin-top: 30px;
-	color: gray;
-	background: rgba(255,255,255,.1);
-	padding-top: 7px;
-	padding-bottom: 7px;
+footer {
+    position: relative;
+    top: 50px;
+    bottom: 0;
+    color: #24be31;
+    padding-bottom: 15px;
+    text-align: center;
 }
-.welcome{
-	text-align: center;
-	color: green;	
-	/*background: url('../img/loaders/party.jpg');*/
+/*********************
+	HOME PAGE
+***********************/
+.jumbotron {
+    margin-top: 30px;
+    color: gray;
+    background: rgba(255, 255, 255, .1);
+    padding-top: 7px;
+    padding-bottom: 7px;
 }
-.welcome h1{
-	font-size: 4.5em;
-	font-family: "Nunito" sans-serif;
-	text-shadow: 1px 1px 3px #fff; 
+.welcome {
+    text-align: center;
+    color: #24be31;
 }
-.outerWelcome{
-	margin-left: 10%;
-	background: url('../img/loaders/party.jpg')
-}			
-.welcomeBox{
-	padding-top: 5%;
-	padding-bottom: 5%;
-	background: rgba(0,0,0, .8);	
+.welcome h1 {
+    color: green;
+    font-size: 4.5em;
+    font-family: "Nunito" sans-serif;
+    text-shadow: 1px 1px 3px #fff;
 }
-.miniBox p::first-letter{
-	font-size: 3em;
-	padding: 5px;
-	color: green;
+.outerWelcome, .outerContact, .outerAbout {    
+    background: url('../img/loaders/party.jpg') no-repeat center center;
+    background-size: cover;
 }
-.miniBox{
-	opacity: 0.5;
-	color: #fff;
-	font-size: 2.5em;
-	font-family: "signika" cursive;
-	margin-right: 15px; 
-	border-radius: 25%;
-	vertical-align: center;
-	padding-top: 5%;
-	padding-bottom: 5%;
-	transition: all 3s;
+.welcomeBox, .contactBox, .aboutBox {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background: rgba(0, 0, 0, .8);
+    text-align: center;
+    color: #fff;
 }
-.miniBox:hover{
-	opacity: 1;
-	/*background: rgba(255,255,255, .1);*/
-	transition: all 3s;
+.contactBox, .aboutBox {
+    padding-top: 5%;
 }
-.welcome2{
-	margin-left: 10%;	
-	background: url('../img/loaders/party.jpg');
+.miniBox p::first-letter {
+    font-size: 3em;
+    padding-right: 5px;
+    color: #24be31;
+}
+.miniBox {
+    opacity: 0.5;
+    color: #fff;
+    font-size: 2em;
+    font-family: "signika" cursive;    
+    border-radius: 25%;
+    vertical-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    transition: all 3s;
+}
+.miniBox:hover {
+    opacity: 1;
+    color:#ebeaeb;
+    transition: all 3s;
+}
+.welcome2 {
+    background: url('../img/loaders/party.jpg');
 }
 .welcomeBox2 {
-	color:#fff;
-	font-family: 'Poiret One' sans-serif;
-	font-size: 2em;
-	font-weight: bold;
-	text-align: center;
-	background: rgba(0,0,0, .8);
-	padding-top: 10%;
-	padding-bottom: 10%;
+    color: #fff;
+    font-family: 'Poiret One' sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(0, 0, 0, .8);
+    padding-top: 6%;
+    padding-bottom: 6%;
 }
-.welcomeBox2 h2{
-	font-size: 3em;
+.welcomeBox2 h2 {
+    font-size: 3em;
 }
-
-/*View Program page*/
-.programInfo{
-	background: rgb(2,2,2);
-}
-.page-header, .lead{
-	color: blue;
-}
-.thumbsopaque
-{
-	opacity: 0.5;
-}
-.descriptionBox{
-	width: 300px;
-}
-.commentBox{
-	margin-top: 20px;
-	padding-top: 15px;
-	border: solid 1px gray;
-	vertical-align: center;
-	width: 25%;
-}
-.commentBox p{
-	margin-left: 10px;
-}
-.commentBox .cmtstart{
-	margin-left: 5px;
-}
-.lead1{
-	font-style: italic;
-}
-/******************
-	SIGN UP PAGE
-******************/
-.signupBox{
-	background: rgba(255,255,255, .1);
-	margin-top: 50px;
-	border-radius: 10%;
-	color: green;
-	padding-bottom: 15px;
-}
-.signupBox h3{
-	font-size: 1.3em;
-}
-.show-signup{
-	color:green;
-}
-
-/******************
-	SIGN IN PAGE
-******************/
-.signinBox{
-	background: rgba(255,255,255, .1);
-	margin-top: 50px;
-	border-radius: 10%;
-	color: green;
-	padding-bottom: 15px;
-	margin-bottom: 30px;
-}
-.signinBox h3{
-	font-size: 1.3em;
-}
-
-
 /*********************
-	LIST EVENTS PAGE
+	VIEW EVENT PAGE
 **********************/
-.eventBox{
-	text-align: center;	
+
+.programInfo {
+    background: rgba(255, 255, 255, .1);
+    padding: 10px 50px;
+    border-radius: 5%;
 }
-a.list-group-item:hover{
-	background: rgba(0,0,0, .6);
+.thumbsopaque {
+    opacity: 0.5;
 }
-a.list-group-item{
-	background: rgba(0,0,0, .8);
-	color: #fff;
-	border: solid 1px #ccc;
+.descriptionBox {
+    width: 300px;
+}
+.forAll p, .descriptionBox, .map h2, .qrCode h3,.commentBox p  {
+    font-family: 'Lato' sans-serif;
+}
+.forAll p, .descriptionBox, .map h2, .qrCode h3{
+	color: #ccc;
+}
+.commentEntry {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.commentBox {
+    margin-top: 20px;
+    padding-top: 15px;
+    border: solid 1px gray;
+}
+.commentBox p {
+    margin-left: 10px;
+    color: #fff;
+    font-family: 'Lato' sans-serif;
+    font-size: 1em;
+}
+.commentBox small {
+    color: #24be31;
+}
+.commentBox2 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    vertical-align: middle;
+}
+.commentBox .cmtstart {
+    margin-left: 5px;
+}
+.lead1 {
+    font-style: italic;
+}
+.qrCode {
+    margin-top: 50px;
+}
+.qrCode1 {
+    width: 300px;
+    height: 300px;
 }
 /*******************
 	MAP CONTAINER
 *******************/
-.mapResult{
-	border: solid 1px gray;
-	background: yellow;
-	height: 400px;
-	width: 400px;
+
+.mapResult {
+    border: solid 1px gray;
+    height: 400px;
+    width: 400px;
+}
+.map h2 {
+    font-size: 1.5em;
+}
+/******************
+	SIGN UP PAGE
+*******************/
+.signupBox {
+    background: rgba(255, 255, 255, .1);
+    margin-top: 50px;
+    border-radius: 10%;
+    color: #24be31;
+    padding-bottom: 15px;
+}
+.signupBox h3 {
+    font-size: 1.3em;
+}
+.show-signup {
+    color: #24be31;
+}
+/******************
+	SIGN IN PAGE
+******************/
+
+.signinBox {
+    background: rgba(255, 255, 255, .1);
+    margin-top: 50px;
+    border-radius: 10%;
+    color: #24be31;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+.signinBox h3 {
+    font-size: 1.3em;
+}
+/********************
+ACCOUNT SETTING PAGE
+*********************/
+
+h3.col-md-12.text-center {
+    color: #24be31;
+}
+.editProfile, .changePassword, .forgotPassword {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, .1);
+    color: #24be31;
+    border-radius: 10%;
+}
+/*********************
+	LIST EVENTS PAGE
+**********************/
+
+.eventBox {    
+    max-width: 250px;
+}
+.eventBox .eventTitle {
+    padding: 5px 0 0 0;
+}
+.eventTitle p {
+    text-align: right;
+}
+.eventBox .eventTitle>h4 {
+    color: #ebebeb;
+    height: 50px;
+    overflow: hidden;
+}
+.eventBox .eventTitle>h4:hover {
+    color: #444;
+}
+a.list-group-item {
+    color: #fff;
+    transition: 500ms;
+    -webkit-transition: 500ms;
+}
+.eventBox .eventTitle>h4, .eventBox .eventTitle>p {
+    margin: 0;
+    padding: 0;
+}
+a.list-group-item:hover {
+    background: rgba(0, 0, 0, .6);
+}
+a.list-group-item {
+    background: rgba(0, 0, 0, .8);
+    color: #fff;
+    border: solid 1px #ccc;
+}
+.eventImage {
+    margin-bottom: 15px;
+}
+/******************
+	NEW EVENT PAGE
+*******************/
+
+.newEventBox {
+    background: rgba(255, 255, 255, .1);
+    border-radius: 10%;
+    color: #24be31;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+.addNewProg:focus, .addNewProg:hover {
+    background: #24be31;
+    color: #fff;
+}
+/*********************
+	CONTACT INFO PAGE
+*********************/
+
+.contactBox, .aboutBox {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+.contact-info {
+    list-style: none;
+}
+.socialContact {
+    text-align: left;
+    margin-left: 20px;
+}
+.outerContact, .outerAbout {
+    margin-top: 13%;
+    font-family: 'Poiret One' sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.outerAbout h1, .outerContact h3 {
+    font-weight: bold;
+}
+/*********************
+	MY EVENT PAGE
+*********************/
+
+.noEvent {
+    background: rgba(255, 255, 255, .2);
+    border-radius: 5%;
+    color: #24be31;
+    text-align: center;
+    margin-top: 8%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Lato' sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
 
-
-footer{
-	margin-bottom: 0;
-	color: green;
-	padding: 10px 5px;
-	text-align: center;
-}

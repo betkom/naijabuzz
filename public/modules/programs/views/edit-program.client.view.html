@@ -15,9 +15,20 @@
                         <input type="text" data-ng-model="program.location" id="location" class="form-control" placeholder="Location" required>
                     </div>
                     <label class="control-label" for="programDate">Event Date</label>
+                        <div class="row">
+                            <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" data-ng-model="program.programDate" id="programDate" class="form-control  datepicker" required datepicker-popup="{{format}}"is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close"/>
+                                          <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                          </span>
+                                    </div>
+                            </div>
+                        </div>
+                   <!--  <label class="control-label" for="programDate">Event Date</label>
                     <div class="controls">
                         <input type="text" data-ng-model="program.programDate" id="programDate" class="form-control" placeholder="YYYY/MM/DD" required>
-                    </div>
+                    </div> -->
                     <label class="control-label" for="description">Description</label>
                     <div class="controls">
                         <input type="text" data-ng-model="program.description" id="description" class="form-control" placeholder="Enter Event Description" required>

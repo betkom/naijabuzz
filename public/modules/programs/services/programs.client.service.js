@@ -40,17 +40,19 @@ angular.module('programs').factory('ProgramsLike', ['$resource',
     }
 ]);
 
-angular.module('core').factory('Search', ['$http', function($http) {   
+angular.module('core').factory('Search', ['$http','$location', function($http,$location) {   
     var SearchObject = {};
+
 
     SearchObject.searchResults = [];
 
     SearchObject.searchEvents = function(obj) {
+        SearchObject.searchResults = [];
     	$http.get('programs/search', {
     		params: obj
     	}).success(function(response) {
     		SearchObject.searchResults = response;
-    		console.log(response);
+            $location.path('programs/search');
     	});
     };
 

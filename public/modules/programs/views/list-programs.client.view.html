@@ -5,22 +5,21 @@
     <div class="list-group">
     <div class="row">    
             <div class = "col-md-4 eventBox" data-ng-repeat="program in programs">    
+            <div>
             <a data-ng-href="#!/programs/{{program._id}}" class="list-group-item">
-    			<!-- <small class="list-group-item-text">
-    				Posted on
-    				<span data-ng-bind="program.created | date:'medium'"></span>
-    				by
-    				<span data-ng-bind="program.user.displayName"></span>
-    			</small> -->
-                <img src="{{program.image[0].path}}" alt="" width="150px" height="180px"/>
+                <div class="defaultImage">
+                      <div style="height:180px;width:100%;background: url({{program.image[0].path}}) top center no-repeat;background-size:cover;margin:0px auto;">
+                      </div>
+                </div>
+                <div class="eventTitle">
     			<h4 class="list-group-item-heading" data-ng-bind="program.name"></h4>
-               <p> <span data-ng-bind="program.comments.length"></span>{{" comment(s)"}}</p>
-               <p><span data-ng-bind="program.likes.length"></span>{{" like(s)"}}</p>
+                <p><span data-ng-bind="program.comments.length"></span><i class="glyphicon glyphicon-comment"></i> <span data-ng-bind="program.likes.length"></span><i class="glyphicon glyphicon-thumbs-up"></i></p>
+                </div>
             </a>
             </div>
         </div>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!programs.$resolved || programs.length">
-    	No Programs yet, why don't you <a href="/#!/programs/create">create one</a>?
+    	No Programs yet, why don't you <a href="/#!/programs/create">create one?</a>
     </div>
 </section>

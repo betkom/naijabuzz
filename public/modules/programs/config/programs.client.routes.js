@@ -9,6 +9,10 @@ angular.module('programs').config(['$stateProvider',
 			url: '/programs',
 			templateUrl: 'modules/programs/views/list-programs.client.view.html'
 		}).
+		state('myPrograms', {
+			url: '/programs/myPrograms',
+			templateUrl: 'modules/programs/views/my-programs.client.view.html'
+		}).
 		state('createProgram', {
 			url: '/programs/create',
 			templateUrl: 'modules/programs/views/create-program.client.view.html'
