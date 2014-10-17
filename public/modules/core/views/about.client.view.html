@@ -4,33 +4,7 @@
             <h1>About NaijaBuzz</h1>
             <p>NaijaBuzz is an app created by Tolulope Komolafe as part of the projects done during The Andela Institute Fellowship Program</p>
             <p>The app is targeted towards helping Nigerians find out about events and also to creat events all without charge</p>
-        </div>
-        ol-md-4 eventBox" data-ng-repeat="program in programs" data-ng-if="authentication.user._id === program.user._id">
-        <div>
-            <a data-ng-href="#!/programs/{{program._id}}" class="list-group-item">
-                <div class="defaultImage">
-                    <div style="height:180px;width:100%;background: url({{program.image[0].path}}) top center no-repeat;background-size:cover;margin:0px auto;">
-                    </div>
-                </div>
-                <div class="eventTitle">
-                    <h4 class="list-group-item-heading" data-ng-bind="program.name"></h4>
-                    <p>
-                        <span data-ng-bind="program.comments.length"></span><i class="glyphicon glyphicon-comment"></i> 
-                        <span data-ng-bind="program.likes.length"></span><i class="glyphicon glyphicon-thumbs-up"></i>
-                    </p>
-                </div>
-            </a>
-        </div>
+            <p>I hope this App helps to add more substance and spice to the lives of nigerians out there</p>
+        </div>        
     </div>
-    </div>
-    <div data-ng-if="authentication.user._id !== program.user._id" class="noEvent" ng-hide="authentication.user._id === program.user._id">
-        <p>There are no Events created by you at this moment</p>
-    </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!programs.$resolved || programs.length">
-        No Programs yet, why don't you <a href="/#!/programs/create">create one</a>?
-    </div>
-
-    </div>
-
-
 </section>

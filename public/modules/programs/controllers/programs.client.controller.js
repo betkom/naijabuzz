@@ -119,10 +119,10 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
                 $scope.error = errorResponse.data.message;
             });
         };
-
         // Find a list of Programs
         $scope.find = function() {
             $scope.programs = Programs.query().sort();
+            
         };
 
         function fixDate(i) {
@@ -158,7 +158,7 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$http', 
                 }
                 catch(e0)
                 {
-                    
+
                 }
                 $scope.program = $scope.programContent.program;
                 //Formating Date

@@ -20,6 +20,11 @@ header.navbar.navbar-fixed-top.navbar-inverse.ng-scope {
 header.navbar.navbar-fixed-top.navbar-inverse.ng-scope:hover {
     background: rgba(0, 0, 0, 1);
 }
+footer{
+	position: relative;
+	bottom: 0;
+	margin-top: 50px;
+}
 .navbar-brand {
     font-family: "Nunito" sans-serif;
     font-weight: bold;

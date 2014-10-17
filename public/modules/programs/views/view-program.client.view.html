@@ -3,7 +3,7 @@
         <h1 data-ng-bind="program.name"></h1>
     </div>
     <div class="row">
-        <div  class="col-xs-6 forAll">
+        <div  class="col-xs-12 col-md-6 forAll">
         <div class="programInfo">
             <div class="pull-right" data-ng-show="authentication.user._id == program.user._id">
                 <a class="btn btn-primary" href="/#!/programs/{{program._id}}/edit">
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 map" data-ng-if="authentication.user._id">
+        <div class=" col-xs -12 col-md-6 map" data-ng-if="authentication.user._id">
         	<h2>Where?</h2>
             <div class="mapResult" id="map_canvas">Where?
             </div>

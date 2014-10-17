@@ -4,7 +4,7 @@
     </div>
     <div class="list-group">
         <div class="row">
-            <div class="col-md-4 eventBox" data-ng-repeat="program in programs" data-ng-if="authentication.user._id === program.user._id">
+            <div class="col-xs-10 col-xm-offset-2 col-xm-6 col-md-3 eventBox" data-ng-repeat="program in programs" data-ng-if="authentication.user._id === program.user._id">
                 <div>
                     <a data-ng-href="#!/programs/{{program._id}}" class="list-group-item">
                         <div class="defaultImage">
@@ -22,10 +22,5 @@
                 </div>
             </div>
         </div>
-        <div data-ng-if="authentication.user._id !== program.user._id" class="noEvent" ng-hide="authentication.user._id === program.user._id">
-            <p>There are no Events created by you at this moment</p>
-        </div>
-        <div class="alert alert-warning text-center" data-ng-hide="!programs.$resolved || programs.length">
-            No Programs yet, why don't you <a href="/#!/programs/create">create one</a>?
-        </div>
+    </div>
 </section>
